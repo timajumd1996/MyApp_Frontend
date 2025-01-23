@@ -1,0 +1,62 @@
+/* General carousel styles */
+
+
+.carousel-container {
+    margin: top 0px; /* Adjust according to the height of your navbar */
+    position: sticky;
+    top: 0px;
+    z-index: 2; 
+    height: 700px;
+}
+.custom-nav {
+    opacity: 0.8;
+}
+.about-container {
+    position: relative;
+    padding: 20px;
+    z-index: 30;
+    background-color: transparent;
+    
+}
+.aboutUs{
+    color: white;
+}
+
+.footer-container {
+    position: relative; /* Adjust according to the height of your carousel */
+    padding: 00px;
+    z-index: 35;
+}
+.category-container{
+    position: relative;
+    padding: 50px;
+    z-index: 30;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    margin-top: 5px;
+
+    /* display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
+    padding: 10px; */
+}
+.category-image {
+    height: 100vh;
+    width: auto;
+    padding: 20px;
+}
+.category{
+    color: white;
+    padding: 20px;
+}
+.category-name{
+    color: white;
+}
+
+.category-container .MuiCard-root:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    transition: transform 0.1s ease;
+}
