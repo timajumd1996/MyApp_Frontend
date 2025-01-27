@@ -3,14 +3,13 @@ import { Grid, Card, CardContent, Typography } from '@mui/material';
 import suta1 from '../images/suta1.webp';
 import suta2 from '../images/suta2.webp';
 import suta4 from '../images/suta4.webp';
-import '../css/carousel.css'
+import '../css/carousel.css';
 
 const About = () => {
     return (
 
         <div className='about-container'>
             <h2 className='aboutUs'>About Us:</h2><br/>
-
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={10}>
 

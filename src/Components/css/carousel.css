@@ -31,9 +31,9 @@
     position: relative;
     padding: 50px;
     z-index: 30;
-    background-color: transparent;
+    /* background-color: transparent; */
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     color: white;
     margin-top: 5px;
 
@@ -57,6 +57,68 @@
 }
 
 .category-container .MuiCard-root:hover {
-    transform: scale(1.05); /* Slight zoom effect */
+    transform: scale(1.1); /* Slight zoom effect */
     transition: transform 0.1s ease;
 }
+.cottonsaree-container{
+    position: relative;
+    padding: 50px;
+    z-index: 30;
+    background-color:rgb(245, 213, 243);
+    display: flex;
+
+}
+.cottonsaree-container .MuiCard-root:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    transition: transform 0.1s ease;
+}
+.officewear-container{
+    position: relative;
+    padding: 50px;
+    z-index: 30;
+    background-color:rgb(245, 215, 243);
+    display: flex;
+
+}
+.officewear-container .MuiCard-root:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    transition: transform 0.1s ease;
+}
+.readytowear-container{
+    position: relative;
+    padding: 50px;
+    z-index: 30;
+    background-color:rgb(245, 215, 243);
+    display: flex;
+
+}
+.readytowear-container .MuiCard-root:hover{
+    transform: scale(1.1); /* Slight zoom effect */
+    transition: transform 0.1s ease;
+
+}
+.partywear-container{
+    position: relative;
+    padding: 50px;
+    z-index: 30;
+    background-color:rgb(245, 215, 243);
+    display: flex;
+}
+.partywear-container .MuiCard-root:hover{
+    transform: scale(1.1); /* Slight zoom effect */
+    transition: transform 0.1s ease;
+
+} 
+.organza-container{
+    position: relative;
+    padding: 50px;
+    z-index: 30;
+    background-color:rgb(245, 215, 243);
+    display: flex;
+
+}
+.organza-container .MuiCard-root:hover{
+    transform: scale(1.1); /* Slight zoom effect */
+    transition: transform 0.1s ease;
+
+} 

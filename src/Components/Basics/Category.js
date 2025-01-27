@@ -5,19 +5,22 @@ import office1 from '../images/office1.webp';
 import readytowear1 from '../images/readytowear1.webp';
 import party2 from '../images/party2.webp';
 import organza1 from '../images/organza1.webp';
+import { useNavigate } from 'react-router-dom';
 import '../css/carousel.css';
 
 const categories = [
-    { name: 'Cotton Saree', imgSrc: suta5, description: 'Elegant cotton sarees for all occasions.' },
-    { name: 'Office Wear', imgSrc: office1, description: 'Stylish sarees for professional settings.' },
-    { name: 'Ready to Wear', imgSrc: readytowear1, description: 'Pre-stitched sarees for convenience.' },
-    { name: 'Party Wear', imgSrc: party2, description: 'Glamorous sarees for special events.' },
-    { name: 'Organza Saree', imgSrc: organza1, description: 'Delicate organza sarees with a modern touch.' },
+    { name: 'Cotton Saree', imgSrc: suta5, description: 'Elegant cotton sarees for all occasions.', url: '/CottonSaree' },
+    { name: 'Office Wear', imgSrc: office1, description: 'Stylish sarees for professional settings.', url: '/OfficeWear' },
+    { name: 'Ready to Wear', imgSrc: readytowear1, description: 'Pre-stitched sarees for convenience.', url: '/ReadytoWear' },
+    { name: 'Party Wear', imgSrc: party2, description: 'Glamorous sarees for special events.', url: '/PartyWear' },
+    { name: 'Organza Saree', imgSrc: organza1, description: 'Delicate organza sarees with a modern touch.', url: '/OrganzaSaree' },
 ];
 
 const Category = () => {
+    const navigate = useNavigate();
+
     return (
-        <Grid container direction="column" spacing={5} className="category" justifyContent="center">
+        <Grid container direction="row" spacing={5} className="category" justifyContent="center">
             <Grid item>
                 <Typography variant="h4" align="center" gutterBottom>
                     Category:
@@ -27,7 +30,7 @@ const Category = () => {
                 {categories.map((category, index) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                         <Card
-                            onClick={() => alert(`Clicked on ${category.name}`)}
+                            onClick={() => navigate(category.url)}
                             style={{ cursor: 'pointer', boxShadow: '0 2px 4px rgba(0,0,0,0.2)' }}
                         >
                             <CardMedia
