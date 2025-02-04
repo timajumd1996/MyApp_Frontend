@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Customer/Navbar';
+// import Navbar from '../Customer/Navbar';
 import AppCarousel from '../Basics/AppCarousel';
 import About from '../Basics/About';
 import '../css/carousel.css';
@@ -9,9 +9,7 @@ import Category from '../Basics/Category';
 const Home = () => {
   return (
     <div>
-        <div className='navbar-container'>
-            <Navbar />
-        </div>
+        
         <div className='carousel-container'>
             <AppCarousel />
         </div>
