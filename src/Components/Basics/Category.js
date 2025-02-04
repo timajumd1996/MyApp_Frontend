@@ -20,7 +20,7 @@ const Category = () => {
     const navigate = useNavigate();
 
     return (
-        <Grid container direction="row" spacing={5} className="category" justifyContent="center">
+        <Grid container direction="row" spacing={4} className="category" justifyContent="center">
             <Grid item>
                 <Typography variant="h4" align="center" gutterBottom>
                     Category:
