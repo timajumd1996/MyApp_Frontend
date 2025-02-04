@@ -10,8 +10,17 @@ import organza7 from '../images/organza7.jpg';
 import organza8 from '../images/organza8.jpg';
 import organza9 from '../images/organza9.jpg';
 import organza10 from '../images/organza10.webp';
+import { addToCart } from '../Redux/Action';
+import { buyNow } from '../Redux/Action';
+import { useDispatch } from 'react-redux';
 
-const organzaSarees = [
+
+const OrganzaSaree = () => {
+
+    const dispatch = useDispatch();
+    
+
+    const organzaSarees = [
     { name: 'Laal Ishque', imgSrc: organza1, price: '2000' },
     { name: 'Tumi Amar', imgSrc: organza2, price: '2050' },
     { name: 'Megh Dol', imgSrc: organza3, price: '2200' },
@@ -22,18 +31,15 @@ const organzaSarees = [
     { name: 'Laal Pan', imgSrc: organza8, price: '3100' },
     { name: 'Sada Megh', imgSrc: organza9, price: '2650' },
     { name: 'Miss Chandni', imgSrc: organza10, price: '3800' },
-];
+    ];
 
-const OrganzaSaree = (props) => {
-    const { onAddClicked, onBuyNowClicked } = props;
-
-    const addToCart = (sareeName) => {
-        onAddClicked(sareeName);
+    const handleAddToCart = (sareeName) => {
+        dispatch(addToCart(sareeName));
         console.log(`Add to Cart button clicked for ${sareeName}`);
     };
 
-    const buyNow = (sareeName) => {
-        onBuyNowClicked(sareeName);
+    const handleBuyNow = (sareeName) => {
+        dispatch(buyNow(sareeName));
         console.log(`Buy Now button clicked for ${sareeName}`);
     };
 
@@ -63,14 +69,14 @@ const OrganzaSaree = (props) => {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => addToCart(saree.name)}
+                                        onClick={() => handleAddToCart(saree.name)}
                                     >
                                         Add to Cart
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        onClick={() => buyNow(saree.name)}
+                                        onClick={() => handleBuyNow(saree.name)}
                                     >
                                         Buy Now
                                     </Button>

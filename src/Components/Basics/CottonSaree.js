@@ -10,30 +10,38 @@ import suta11 from '../images/suta11.webp';
 import suta12 from '../images/suta12.webp';
 import suta20 from '../images/suta20.webp';
 import suta_new4 from '../images/suta_new4.webp';
+import { addToCart } from '../Redux/Action';
+import { buyNow } from '../Redux/Action';
+import { useDispatch } from 'react-redux';
 
-const cottonSarees = [
-    { name: 'Ganda Phool', imgSrc: suta5, price: '2000' },
-    { name: 'Udti Chidiyan', imgSrc: suta6, price: '2050' },
-    { name: 'Tera Naina', imgSrc: suta7, price: '2200' },
-    { name: 'Titli', imgSrc: suta8, price: '1800' },
-    { name: 'Tose Naina', imgSrc: suta9, price: '2500' },
-    { name: 'Shiuli Phool', imgSrc: suta10, price: '3000' },
-    { name: 'Tere Khatir', imgSrc: suta11, price: '2850' },
-    { name: 'Miss Kolkata', imgSrc: suta12, price: '3100' },
-    { name: 'Madhabi Lata', imgSrc: suta20, price: '2650' },
-    { name: 'Chandni Raat', imgSrc: suta_new4, price: '3800' },
-];
 
-const CottonSaree = (props) => {   //(props): Accepts props as a parameter, which is an object that holds data passed from the parent component.
-    const { onAddClicked, onBuyNowClicked } = props;
+const CottonSaree = () => {   //(props): Accepts props as a parameter, which is an object that holds data passed from the parent component.
 
-    const addToCart = (sareeName) => {
-        onAddClicked(sareeName);
+    const dispatch = useDispatch();
+
+    // const { onAddClicked, onBuyNowClicked } = props;
+
+
+    const cottonSarees = [
+        { name: 'Ganda Phool', imgSrc: suta5, price: '2000' },
+        { name: 'Udti Chidiyan', imgSrc: suta6, price: '2050' },
+        { name: 'Tera Naina', imgSrc: suta7, price: '2200' },
+        { name: 'Titli', imgSrc: suta8, price: '1800' },
+        { name: 'Tose Naina', imgSrc: suta9, price: '2500' },
+        { name: 'Shiuli Phool', imgSrc: suta10, price: '3000' },
+        { name: 'Tere Khatir', imgSrc: suta11, price: '2850' },
+        { name: 'Miss Kolkata', imgSrc: suta12, price: '3100' },
+        { name: 'Madhabi Lata', imgSrc: suta20, price: '2650' },
+        { name: 'Chandni Raat', imgSrc: suta_new4, price: '3800' },
+    ];
+
+    const handleAddToCart = (sareeName) => {
+        dispatch(addToCart(sareeName));
         console.log(`Add to Cart button clicked for ${sareeName}`);
     };
 
-    const buyNow = (sareeName) => {
-        onBuyNowClicked(sareeName);
+    const handleBuyNow = (sareeName) => {
+        dispatch(buyNow(sareeName));
         console.log(`Buy Now button clicked for ${sareeName}`);
     };
 
@@ -63,14 +71,14 @@ const CottonSaree = (props) => {   //(props): Accepts props as a parameter, whic
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => addToCart(saree.name)}
+                                        onClick={() => handleAddToCart(saree.name)}
                                     >
                                         Add to Cart
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        onClick={() => buyNow(saree.name)}
+                                        onClick={() => handleBuyNow(saree.name)}
                                     >
                                         Buy Now
                                     </Button>

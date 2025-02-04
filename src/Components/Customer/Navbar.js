@@ -1,67 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { AppBar, Toolbar, Typography, Button, IconButton, Box, Badge } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import '../css/carousel.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0);
+  const cart = useSelector((state) => state.cart.cart || []);
 
-  // Handle Logout Functionality
+  useEffect(() => {
+    setCartCount(cart.length);
+  }, [cart]);
+
+  // Handle Logout
   const handleLogout = (e) => {
     e.preventDefault();
-
-    // Remove token from localStorage
     localStorage.removeItem('token');
-
-    // Redirect to login page
     navigate('/CustomerLogin');
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top custom-nav">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Lavanya
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/CartPage">
-                Cart
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/ViewOrder">
-                Orders
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/About">
-                About
-              </Link>
-            </li>
-          </ul>
-          <button className="btn btn-primary" onClick={handleLogout}>
+    <AppBar position="static" sx={{ backgroundColor: '#1976d2' }}>
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Lavanya</Link>
+        </Typography>
+
+        {/* Desktop Menu */}
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Button color="inherit">
+            <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/About" style={{ color: 'white', textDecoration: 'none' }}>About</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/ViewOrder" style={{ color: 'white', textDecoration: 'none' }}>Orders</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/CartPage" style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+              <Badge badgeContent={cartCount} color="error" showZero>
+                <ShoppingCartIcon />
+              </Badge>
+              <span style={{ marginLeft: '5px' }}>Cart</span>
+            </Link>
+          </Button>
+          <Button color="inherit" onClick={handleLogout}>
             Logout
-          </button>
-        </div>
-      </div>
-    </nav>
+          </Button>
+        </Box>
+
+        {/* Mobile Menu */}
+        <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
+          <IconButton color="inherit">
+            <MenuIcon />
+          </IconButton>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 

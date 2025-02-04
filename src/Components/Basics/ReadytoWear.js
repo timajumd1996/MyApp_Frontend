@@ -9,29 +9,36 @@ import readytowear6 from '../images/readytowear6.webp';
 import readytowear7 from '../images/readytowear7.webp';
 import readytowear8 from '../images/readytowear8.webp';
 import readytowear9 from '../images/readytowear9.webp';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../Redux/Action';
+import { buyNow } from '../Redux/Action';
 
-const readyToWearSarees = [
-    { name: 'Megh Balika', imgSrc: readytowear1, price: '2000' },
-    { name: 'Sitara', imgSrc: readytowear2, price: '2050' },
-    { name: 'Echee Dana', imgSrc: readytowear3, price: '2200' },
-    { name: 'Kali Ankhe', imgSrc: readytowear4, price: '1800' },
-    { name: 'Gulabi Ankhe', imgSrc: readytowear5, price: '2500' },
-    { name: 'Rupali Mon', imgSrc: readytowear6, price: '3000' },
-    { name: 'Palak', imgSrc: readytowear7, price: '2850' },
-    { name: 'Kochu Pata', imgSrc: readytowear8, price: '3100' },
-    { name: 'Oh My Love', imgSrc: readytowear9, price: '2650' },
-];
 
-const ReadytoWear = (props) => {
-    const { onAddClicked, onBuyNowClicked } = props;
 
-    const addToCart = (sareeName) => {
-        onAddClicked(sareeName);
+const ReadytoWear = () => {
+
+    const dispatch = useDispatch();
+   
+
+    const readyToWearSarees = [
+        { name: 'Megh Balika', imgSrc: readytowear1, price: '2000' },
+        { name: 'Sitara', imgSrc: readytowear2, price: '2050' },
+        { name: 'Echee Dana', imgSrc: readytowear3, price: '2200' },
+        { name: 'Kali Ankhe', imgSrc: readytowear4, price: '1800' },
+        { name: 'Gulabi Ankhe', imgSrc: readytowear5, price: '2500' },
+        { name: 'Rupali Mon', imgSrc: readytowear6, price: '3000' },
+        { name: 'Palak', imgSrc: readytowear7, price: '2850' },
+        { name: 'Kochu Pata', imgSrc: readytowear8, price: '3100' },
+        { name: 'Oh My Love', imgSrc: readytowear9, price: '2650' },
+    ];
+
+    const handleAddToCart = (sareeName) => {
+       dispatch(addToCart(sareeName));
         console.log(`Add to Cart button clicked for ${sareeName}`);
     };
 
-    const buyNow = (sareeName) => {
-        onBuyNowClicked(sareeName);
+    const handleBuyNow = (sareeName) => {
+        dispatch(buyNow(sareeName));
         console.log(`Buy Now button clicked for ${sareeName}`);
     };
 
@@ -61,14 +68,14 @@ const ReadytoWear = (props) => {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => addToCart(saree.name)}
+                                        onClick={() => handleAddToCart(saree.name)}
                                     >
                                         Add to Cart
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        onClick={() => buyNow(saree.name)}
+                                        onClick={() => handleBuyNow(saree.name)}
                                     >
                                         Buy Now
                                     </Button>

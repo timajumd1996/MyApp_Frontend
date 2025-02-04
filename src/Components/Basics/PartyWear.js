@@ -9,29 +9,36 @@ import party7 from '../images/party7.webp';
 import party8 from '../images/party8.webp';
 import party9 from '../images/party9.webp';
 import party10 from '../images/party10.webp';
+import { addToCart } from '../Redux/Action';
+import { buyNow } from '../Redux/Action';
+import { useDispatch } from 'react-redux';
 
-const partyWearSarees = [
-    { name: 'Chikni Chamili', imgSrc: party2, price: '10000' },
-    { name: 'Purple Love', imgSrc: party3, price: '5050' },
-    { name: 'Diwali Diya', imgSrc: party4, price: '6200' },
-    { name: 'Dhaker Saj', imgSrc: party5, price: '11000' },
-    { name: 'Pujar Saj', imgSrc: party6, price: '6500' },
-    { name: 'Sharmili', imgSrc: party7, price: '5000' },
-    { name: 'Sajbo Jotone', imgSrc: party8, price: '8850' },
-    { name: 'Phool Kali', imgSrc: party9, price: '7100' },
-    { name: 'Suktara', imgSrc: party10, price: '8650' },
-];
 
-const PartyWear = (props) => {
-    const { onAddClicked, onBuyNowClicked } = props;
 
-    const addToCart = (sareeName) => {
-        onAddClicked(sareeName);
+const PartyWear = () => {
+
+    const dispatch = useDispatch();
+
+    const partyWearSarees = [
+        { name: 'Chikni Chamili', imgSrc: party2, price: '10000' },
+        { name: 'Purple Love', imgSrc: party3, price: '5050' },
+        { name: 'Diwali Diya', imgSrc: party4, price: '6200' },
+        { name: 'Dhaker Saj', imgSrc: party5, price: '11000' },
+        { name: 'Pujar Saj', imgSrc: party6, price: '6500' },
+        { name: 'Sharmili', imgSrc: party7, price: '5000' },
+        { name: 'Sajbo Jotone', imgSrc: party8, price: '8850' },
+        { name: 'Phool Kali', imgSrc: party9, price: '7100' },
+        { name: 'Suktara', imgSrc: party10, price: '8650' },
+    ];
+    
+
+    const handleAddToCart = (sareeName) => {
+        dispatch(addToCart(sareeName));
         console.log(`Add to Cart button clicked for ${sareeName}`);
     };
 
-    const buyNow = (sareeName) => {
-        onBuyNowClicked(sareeName);
+    const handleBuyNow = (sareeName) => {
+        dispatch(buyNow(sareeName));
         console.log(`Buy Now button clicked for ${sareeName}`);
     };
 
@@ -61,14 +68,14 @@ const PartyWear = (props) => {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => addToCart(saree.name)}
+                                        onClick={() => handleAddToCart(saree.name)}
                                     >
                                         Add to Cart
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        onClick={() => buyNow(saree.name)}
+                                        onClick={() => handleBuyNow(saree.name)}
                                     >
                                         Buy Now
                                     </Button>
