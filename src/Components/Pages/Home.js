@@ -5,11 +5,11 @@ import About from '../Basics/About';
 import '../css/carousel.css';
 import Footer from '../Basics/Footer';
 import Category from '../Basics/Category';
+import Cart from '../Customer/Cart';
 
 const Home = () => {
   return (
     <div>
-        
         <div className='carousel-container'>
             <AppCarousel />
         </div>
@@ -22,8 +22,12 @@ const Home = () => {
         <div className='footer-container'>
             <Footer />
         </div>
+        <div className='cart-container'>
+            <Cart />
+        </div>
     </div>
   )
 }
 
 export default Home
+

@@ -32,14 +32,14 @@ const ReadytoWear = () => {
         { name: 'Oh My Love', imgSrc: readytowear9, price: '2650' },
     ];
 
-    const handleAddToCart = (sareeName) => {
-       dispatch(addToCart(sareeName));
-        console.log(`Add to Cart button clicked for ${sareeName}`);
+    const handleAddToCart = (item) => {
+       dispatch(addToCart(item));
+        console.log(`Add to Cart button clicked for ${item.name}`);
     };
 
-    const handleBuyNow = (sareeName) => {
-        dispatch(buyNow(sareeName));
-        console.log(`Buy Now button clicked for ${sareeName}`);
+    const handleBuyNow = (item) => {
+        dispatch(buyNow(item));
+        console.log(`Buy Now button clicked for ${item.name}`);
     };
 
     return (
@@ -68,14 +68,14 @@ const ReadytoWear = () => {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => handleAddToCart(saree.name)}
+                                        onClick={() => handleAddToCart(saree)}
                                     >
                                         Add to Cart
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        onClick={() => handleBuyNow(saree.name)}
+                                        onClick={() => handleBuyNow(saree)}
                                     >
                                         Buy Now
                                     </Button>

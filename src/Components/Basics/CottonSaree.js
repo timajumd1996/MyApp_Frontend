@@ -10,17 +10,11 @@ import suta11 from '../images/suta11.webp';
 import suta12 from '../images/suta12.webp';
 import suta20 from '../images/suta20.webp';
 import suta_new4 from '../images/suta_new4.webp';
-import { addToCart } from '../Redux/Action';
-import { buyNow } from '../Redux/Action';
+import { addToCart, buyNow } from '../Redux/Action';
 import { useDispatch } from 'react-redux';
 
-
-const CottonSaree = () => {   //(props): Accepts props as a parameter, which is an object that holds data passed from the parent component.
-
+const CottonSaree = () => {
     const dispatch = useDispatch();
-
-    // const { onAddClicked, onBuyNowClicked } = props;
-
 
     const cottonSarees = [
         { name: 'Ganda Phool', imgSrc: suta5, price: '2000' },
@@ -35,14 +29,15 @@ const CottonSaree = () => {   //(props): Accepts props as a parameter, which is 
         { name: 'Chandni Raat', imgSrc: suta_new4, price: '3800' },
     ];
 
-    const handleAddToCart = (sareeName) => {
-        dispatch(addToCart(sareeName));
-        console.log(`Add to Cart button clicked for ${sareeName}`);
+    // Correcting to pass entire item object
+    const handleAddToCart = (item) => {
+        dispatch(addToCart(item)); // Dispatching the entire item
+        console.log(`Add to Cart button clicked for ${item.name}`);
     };
 
-    const handleBuyNow = (sareeName) => {
-        dispatch(buyNow(sareeName));
-        console.log(`Buy Now button clicked for ${sareeName}`);
+    const handleBuyNow = (item) => {
+        dispatch(buyNow(item)); // Dispatching the entire item
+        console.log(`Buy Now button clicked for ${item.name}`);
     };
 
     return (
@@ -71,14 +66,14 @@ const CottonSaree = () => {   //(props): Accepts props as a parameter, which is 
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => handleAddToCart(saree.name)}
+                                        onClick={() => handleAddToCart(saree)} // Pass the entire saree object
                                     >
                                         Add to Cart
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        onClick={() => handleBuyNow(saree.name)}
+                                        onClick={() => handleBuyNow(saree)} // Pass the entire saree object
                                     >
                                         Buy Now
                                     </Button>

@@ -13,6 +13,7 @@ import ReadytoWear from './Components/Basics/ReadytoWear';
 import PartyWear from './Components/Basics/PartyWear';
 import OrganzaSaree from './Components/Basics/OrganzaSaree';
 import About from './Components/Basics/About';
+import Cart from './Components/Customer/Cart';
 import Navbar from './Components/Customer/Navbar';
 
 
@@ -25,6 +26,7 @@ const App = () => {
       <Routes>
         <Route exact path='/'element={< Home />} />  
         <Route exact path='/About'element={< About />} />  
+        <Route exact path='/Cart' element={< Cart />} />
         <Route exact path="/CottonSaree" element={<CottonSaree />} />
         <Route exact path="/OfficeWear" element={<OfficeWear />} />
         <Route exact path="/ReadytoWear" element={<ReadytoWear />} />

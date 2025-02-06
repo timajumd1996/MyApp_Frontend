@@ -12,15 +12,9 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart.cart || []);
 
   useEffect(() => {
-    setCartCount(cart.length);
-  }, [cart]);
-
-  // Handle Logout
-  const handleLogout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem('token');
-    navigate('/CustomerLogin');
-  };
+    console.log("Cart updated:", cart); // Log cart to verify updates
+    setCartCount(cart.length); // Update cartCount based on cart state
+  }, [cart]); // Re-run useEffect when `cart` changes
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1976d2' }}>
@@ -41,15 +35,15 @@ const Navbar = () => {
             <Link to="/ViewOrder" style={{ color: 'white', textDecoration: 'none' }}>Orders</Link>
           </Button>
           <Button color="inherit">
-            <Link to="/CartPage" style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <Link to="/Cart" style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <Badge badgeContent={cartCount} color="error" showZero>
                 <ShoppingCartIcon />
               </Badge>
               <span style={{ marginLeft: '5px' }}>Cart</span>
             </Link>
           </Button>
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
+          <Button color="inherit" >
+            <Link to="/CustomerLogin" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
           </Button>
         </Box>
 
