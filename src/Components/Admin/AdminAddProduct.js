@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 const AdminAddProduct = () => {
   const [productname, setProductName] = useState('');
@@ -11,8 +11,6 @@ const AdminAddProduct = () => {
   const [country_of_origin, setCountryOfOrigin] = useState('');
   const [count, setCount] = useState('');
   const [image, setImage] = useState('');
-
-  const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
